@@ -12,44 +12,41 @@ const changeTurn = () => {
 
 // Function to check for a win
 const checkWin = () => {
-        let boxtext = document.getElementsByClassName("boxtext");
-        let wins = [
-            [0, 1, 2, 2, 3, 0, 2, 10, 0],
-            [3, 4, 5, 2, 10, 0, 2, 30, 0],
-            [6, 7, 8, 2, 17, 0, 2, 50, 0],
-            [0, 3, 6, -5, 10, 90, -17, 30, 90],
-            [1, 4, 7, 2, 10, 90, 3, 30, 90],
-            [2, 5, 8, 9, 10, 90, 23, 30, 90],
-            [0, 4, 8, 2, 10, 45, 2, 29, 45],
-            [2, 4, 6, 2, 10, 135, 2, 29, 135],
-        ]
-        wins.forEach(e => {
-            if ((boxtext[e[0]].innerText === boxtext[e[1]].innerText) && boxtext[e[2]].innerText === boxtext[e[1]].innerText && (boxtext[e[0]].innerText !== "")) {
-                document.querySelector('.info').innerText = boxtext[e[0]].innerText + " Won";
-                isGameOver = true;
-                document.querySelector('.imgbox').getElementsByTagName('img')[0].style.width = "250px";
-                // music.play();
-                // document.querySelector('.line').style.transform = `translate(${e[3]}vw, ${e[4]}vw)rotate(${e[5]}deg)`;
-                // document.querySelector('.line').style.width = "17vw";
+    let boxtext = document.getElementsByClassName("boxtext");
+    let wins = [
+        [0, 1, 2, 2, 3, 0, 2, 10, 0],
+        [3, 4, 5, 2, 10, 0, 2, 30, 0],
+        [6, 7, 8, 2, 17, 0, 2, 50, 0],
+        [0, 3, 6, -5, 10, 90, -17, 30, 90],
+        [1, 4, 7, 2, 10, 90, 3, 30, 90],
+        [2, 5, 8, 9, 10, 90, 23, 30, 90],
+        [0, 4, 8, 2, 10, 45, 2, 29, 45],
+        [2, 4, 6, 2, 10, 135, 2, 29, 135],
+    ]
+    wins.forEach(e => {
+        if ((boxtext[e[0]].innerText === boxtext[e[1]].innerText) && boxtext[e[2]].innerText === boxtext[e[1]].innerText && (boxtext[e[0]].innerText !== "")) {
+            document.querySelector('.info').innerText = boxtext[e[0]].innerText + " Won";
+            isGameOver = true;
+            document.querySelector('.imgbox').getElementsByTagName('img')[0].style.width = "250px";
+            music.play();
 
-                function myFunction(x) {
-                    if (x.matches) {
-                        document.querySelector('.line').style.transform = `translate(${e[6]}vw, ${e[7]}vw)rotate(${e[8]}deg)`;
-                        document.querySelector('.line').style.width = "55vw";
-                    } else {
-                        document.querySelector('.line').style.transform = `translate(${e[3]}vw, ${e[4]}vw)rotate(${e[5]}deg)`;
-                        document.querySelector('.line').style.width = "17vw";
-                    }
+            function myFunction(x) {
+                if (x.matches) {
+                    document.querySelector('.line').style.transform = `translate(${e[6]}vw, ${e[7]}vw)rotate(${e[8]}deg)`;
+                    document.querySelector('.line').style.width = "55vw";
+                } else {
+                    document.querySelector('.line').style.transform = `translate(${e[3]}vw, ${e[4]}vw)rotate(${e[5]}deg)`;
+                    document.querySelector('.line').style.width = "17vw";
                 }
-
-                var x = window.matchMedia("(max-width: 700px)")
-                myFunction(x)
-                x.addListener(myFunction)
-
             }
-        })
-    }
-    // music.play();
+
+            var x = window.matchMedia("(max-width: 700px)")
+            myFunction(x)
+            x.addListener(myFunction)
+
+        }
+    })
+}
 
 // Game Logic
 let boxes = document.getElementsByClassName("box");
